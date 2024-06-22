@@ -5,7 +5,7 @@ const NewsBoard = ({ category }) => {
   const [articles, setArticles] = useState([])
 
   useEffect(() => {
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=a03b1f0241a842648bf9b441861fee1f`
+    const url = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&max=10&apikey=b3a96545ec3364833b01ba7e4e8c3cf7`
     fetch(url)
       .then(res => res.json())
       .then(data => setArticles(data.articles))
@@ -17,7 +17,7 @@ const NewsBoard = ({ category }) => {
       <div className="row">
         {articles.map((news, index) => (
           <div key={index} className="col-sm-6 col-md-4 col-lg-3 d-flex align-items-stretch">
-            <NewsItem title={news.title} description={news.description} src={news.urlToImage} url={news.url} />
+            <NewsItem title={news.title} description={news.description} src={news.image} url={news.url} />
           </div>
         ))}
       </div>
